@@ -26,7 +26,7 @@ def encontrarPlaca(path, filename, dir):
     kernel = np.ones((1, 60), np.uint8)
     #Operação morfológica para fechamento, conectar lacunas
     img_fechamento = cv2.morphologyEx(img_limirializada, cv2.MORPH_CLOSE, kernel)
-    cv2.imshow('Imagem Fechamento', img_fechamento)
+    #cv2.imshow('Imagem Fechamento', img_fechamento)
 
     kernel = np.ones((6, 1), np.uint8)
     #Operação morfológica para abertura, reduz pontos e tamanho de objetos
@@ -50,7 +50,7 @@ def encontrarPlaca(path, filename, dir):
                 cv2.rectangle(img, (x, y), (x + lar, y + alt), (0, 255, 0), 2)
                 placa_img = cv2.getRectSubPix(img, (lar + 20, alt + 10), (x + lar//2, y + alt//2))
                 cv2.imwrite(dir + filename, placa_img)
-                #cv2.imshow('placa', placa_img)
+                cv2.imshow('placa', placa_img)
                 cv2.waitKey(0)
 
 if __name__ == "__main__":
